@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interactive Resume Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Progress -->
+  <div class="progress-wrap" aria-hidden="true">
+    <div id="progressBar" class="progress-bar"></div>
+  </div>
+
+  <div class="container">
+    <!-- ===== Form ===== -->
+    <section class="form-panel" aria-labelledby="formTitle">
+      <header class="panel-header">
+        <h1 id="formTitle">Resume Form</h1>
+        <p class="muted">Fill the form. The preview updates in real time.</p>
+      </header>
+
+      <form id="resumeForm" autocomplete="on">
+        <!-- Basic Info -->
+        <div class="card">
+          <h2>Basic Information</h2>
+          <div class="grid-2">
+            <label>
+              <span>Name</span>
+              <input type="text" id="name" placeholder="Your full name" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" id="email" placeholder="name@example.com" />
+            </label>
+            <label>
+              <span>Phone</span>
+              <input type="tel" id="phone" placeholder="+91-XXXXXXXXXX" />
+            </label>
+            <label>
+              <span>Location (optional)</span>
+              <input type="text" id="location" placeholder="City, Country" />
+            </label>
+          </div>
+
+          <label>
+            <span>Profile Summary</span>
+            <textarea id="summary" rows="4" placeholder="2–4 lines summarizing your profile"></textarea>
+          </label>
+        </div>
+
+        <!-- Skills -->
+        <div class="card">
+          <h2>Skills</h2>
+          <div class="skills-input">
+            <input
+              type="text"
+              id="skillInput"
+              placeholder="Type a skill and press Enter"
+              aria-label="Add a skill"
+            />
+            <div id="skillTags" class="tag-area" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="card">
+          <div class="row-between">
+            <h2>Education</h2>
+            <button type="button" class="btn ghost" id="addEducation">+ Add Education</button>
+          </div>
+          <div id="educationList" class="stack"></div>
+        </div>
+
+        <!-- Experience -->
+        <div class="card">
+          <div class="row-between">
+            <h2>Experience</h2>
+            <button type="button" class="btn ghost" id="addExperience">+ Add Experience</button>
+          </div>
+          <div id="experienceList" class="stack"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <button type="button" class="btn" id="downloadBtn">Download PDF</button>
+          <button type="reset" class="btn danger" id="clearBtn">Clear Form</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ===== Live Preview ===== -->
+    <section class="preview-panel" aria-labelledby="previewTitle">
+      <header class="panel-header sticky">
+        <h1 id="previewTitle">Live Preview</h1>
+      </header>
+
+      <article id="resumePreview" class="resume">
+        <header class="resume-header">
+          <h1 id="p_name">Your Name</h1>
+          <p id="p_meta" class="meta">
+            <span id="p_email">name@example.com</span>
+            <span id="p_phone">+91-XXXXXXXXXX</span>
+            <span id="p_location"></span>
+          </p>
+        </header>
+
+        <section id="p_summary_sec" class="resume-sec hidden">
+          <h2>Profile</h2>
+          <p id="p_summary"></p>
+        </section>
+
+        <section id="p_skills_sec" class="resume-sec hidden">
+          <h2>Skills</h2>
+          <ul id="p_skills" class="skills-list"></ul>
+        </section>
+
+        <section id="p_edu_sec" class="resume-sec hidden">
+          <h2>Education</h2>
+          <div id="p_edu_list" class="timeline"></div>
+        </section>
+
+        <section id="p_exp_sec" class="resume-sec hidden">
+          <h2>Experience</h2>
+          <div id="p_exp_list" class="timeline"></div>
+        </section>
+      </article>
+    </section>
+  </div>
+
+  <footer class="footer muted">
+    <small>Tip: Use concise bullet points and measurable impact in experience.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
